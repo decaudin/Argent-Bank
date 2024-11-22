@@ -22,4 +22,19 @@
             margin-right: 4px;
         }
     }
+
+    .logout-wrapper {
+        text-decoration: none;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-right: 0.5rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        svg.svg-inline--fa.fa-circle-user, svg.svg-inline--fa.fa-right-from-bracket {
+            margin-right: 4px;
+        }
+    }
 }

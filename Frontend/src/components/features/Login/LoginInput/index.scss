@@ -1,4 +1,5 @@
 .login-form {
+    position: relative;
     background-color: white;
     width: 300px;
     margin: 0 auto;
@@ -20,6 +21,7 @@
     
         label {
             font-weight: bold;
+            cursor: pointer;
         }
     
         input {
@@ -27,7 +29,7 @@
             font-size: 1.2rem;
         }
     }
-
+    
     .checkbow-wrapper {
         display: flex;
         flex-direction: row-reverse;
@@ -35,6 +37,11 @@
 
         input {
             margin-right: 7px;
+            cursor: pointer;
+        }
+
+        label {
+            cursor: pointer;
         }
     }
 

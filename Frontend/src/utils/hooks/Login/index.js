@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../../redux/slices/authSlice';
 
 export const useLogin = (url) => {
+
+    const dispatch = useDispatch();
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -20,11 +24,12 @@ export const useLogin = (url) => {
                 throw new Error('Login failed');
             }
             const data = await response.json();
+            dispatch(setToken(data.body.token));
             return { success : true, data }; 
         } catch (error) {
             setIsError(true);
             console.log(error);
-            return { success : false, data: null }
+            return { success : false, data: null };
         } finally {
             setIsLoading(false);
         }

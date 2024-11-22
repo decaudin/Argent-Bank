@@ -1,5 +1,5 @@
-import ProfileHeader from "../../components/ProfileHeader";
-import Accounts from "../../components/Accounts";
+import ProfileHeader from "../../components/features/Profile/ProfileHeader";
+import Accounts from "../../components/features/Profile/Accounts";
 import './index.scss';
 
 const Profile = () => {

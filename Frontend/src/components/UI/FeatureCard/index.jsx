@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import './index.scss';
 
-const HomeFeature = ({ icon, title, text }) => {
+const FeatureCard = ({ icon, title, text }) => {
 
     return (
         <div className="feature-wrapper">
@@ -12,10 +12,10 @@ const HomeFeature = ({ icon, title, text }) => {
     )
 }
 
-HomeFeature.propTypes = {
+FeatureCard.propTypes = {
     icon: PropTypes.string.isRequired,  
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
 };
 
-export default HomeFeature;
+export default FeatureCard;
