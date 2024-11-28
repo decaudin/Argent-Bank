@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { setUser } from './redux/slices/userSlice'
 import { setToken } from './redux/slices/authSlice';
 import Header from './components/ui/Header';
 import Home from './pages/Home';
@@ -15,6 +16,13 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+
+    const user = localStorage.getItem('user') || sessionStorage.getItem('user');
+    if (user) {
+      const userData = JSON.parse(user);
+      dispatch(setUser(userData));
+    }
+
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (token) {
       dispatch(setToken(token));

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { useLogin } from '../../../../utils/hooks/Login';
+import { useUserData } from '../../../../utils/hooks/User/POST';
 import { usePasswordToggle } from '../../../../utils/hooks/PasswordToggle';
 import { handleChange } from '../../../../utils/function/handleChange';
 import Input from '../../../ui/Input';
@@ -11,8 +12,10 @@ import './index.scss';
 
 const LoginInput = () => {
 
-    const { loginUser, isError, isLoading } = useLogin('http://localhost:3001/api/v1/user/login')
+    const { loginUser, isError, isLoading } = useLogin('http://localhost:3001/api/v1/user/login');
+    const { fetchData, isDataError, isDataLoading } = useUserData('http://localhost:3001/api/v1/user/profile');
     const { isPasswordVisible, togglePasswordVisibility } = usePasswordToggle();
+    
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({ email: "", password: "" });
@@ -21,14 +24,16 @@ const LoginInput = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         const result = await loginUser(formData);
-        if (result.success) {
-            const token = result.data.body.token;
+        const token = result.data.body.token;
+        const data = await fetchData(token);
+        if (result.success && data) {
             if (rememberMe) {
                 localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify({ firstName: data.body.firstName, lastName: data.body.lastName }));
             } else {
                 sessionStorage.setItem('token', token);
+                sessionStorage.setItem('user', JSON.stringify({ firstName: data.body.firstName, lastName: data.body.lastName }));
             }
-            // appeler ici pour infos utilisateurs
             navigate('/profile');
         }
     }
@@ -42,8 +47,9 @@ const LoginInput = () => {
             <EyeToggle isVisible={isPasswordVisible} onToggle={togglePasswordVisibility} />
             <Input className='checkbow-wrapper' label='Remember me' type='checkbox' id='checkbox' name='checkbox' value="" onChange={(e) => setRememberMe(e.target.checked)} />
             <input className='input-submit' type='submit' value='Sign In' />
-            {isLoading && <p>Chargement ...</p>}
+            {isLoading || isDataLoading && <p>Chargement ...</p>}
             {isError && <p>Paire identifiant/mot de passe incorrecte.</p>}
+            {isDataError && <p>Erreur lors du chargement de vos données.</p>}
         </form>
     )
 }

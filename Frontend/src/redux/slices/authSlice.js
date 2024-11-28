@@ -17,5 +17,4 @@ const authSlice = createSlice({
 
 export const { setToken, clearToken } = authSlice.actions;
 
-// Export du reducer pour l'ajouter au store
 export default authSlice.reducer;
