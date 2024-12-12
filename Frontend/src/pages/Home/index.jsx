@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import Banner from "../../components/features/Home/Banner";
-import HomeFeatures from "../../components/features/Home/HomeFeatures";
+import { useEffect } from 'react';
+import Banner from '../../components/features/Home/Banner';
+import HomeFeatures from '../../components/features/Home/HomeFeatures';
 
 const Home = () => {
 

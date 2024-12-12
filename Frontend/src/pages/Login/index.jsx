@@ -1,4 +1,4 @@
-import LoginInput from "../../components/features/Login/LoginInput";
-import "./index.scss";
+import LoginInput from '../../components/features/Login/LoginInput';
+import './index.scss';
 
-export const Login = () => <div className="login"><LoginInput /></div>
+export const Login = () => <div className='login'><LoginInput /></div>

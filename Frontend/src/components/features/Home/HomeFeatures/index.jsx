@@ -2,7 +2,7 @@ import FeatureCard from '../../../ui/FeatureCard';
 import ChatIcon from '../../../../assets/icon-chat.png';
 import MoneyIcon from '../../../../assets/icon-money.png';
 import SecurityIcon from '../../../../assets/icon-security.png';
-import './index.scss'
+import './index.scss';
 
 const HomeFeatures = () => {
 

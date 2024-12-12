@@ -1,0 +1,9 @@
+@import '../../../utils/style/colors.scss';
+
+.button {
+    cursor: pointer;
+    background-color: $main-color;
+    border-color: $main-color;
+    color: #fff;
+    font-weight: bold;
+}

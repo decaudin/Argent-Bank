@@ -1,3 +1,5 @@
+@import '../../../../utils/style/colors.scss';
+
 .login-form {
     position: relative;
     background-color: white;
@@ -48,8 +50,8 @@
     .input-submit {
         cursor: pointer;
         width: 100%;
-        border: #00bc77;
-        background-color: #00bc77;
+        border: $main-color;
+        background-color: $main-color;
         color: #fff;
         text-decoration: underline;
         font-weight: bold;

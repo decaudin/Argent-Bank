@@ -9,6 +9,7 @@ export const useUserData = (url) => {
     const [isDataError, setIsDataError] = useState(false);
 
     const fetchData = async (token) => {
+
         setIsDataLoading(true);
         setIsDataError(false);
         try {
@@ -23,7 +24,7 @@ export const useUserData = (url) => {
             }
             const result = await response.json();
             if (result.body) {
-                dispatch(setUser({firstName: result.body.firstName, lastName: result.body.lastName}));
+                dispatch(setUser({ firstName: result.body.firstName, lastName: result.body.lastName }));
             }
             return result;
         } catch (error) {

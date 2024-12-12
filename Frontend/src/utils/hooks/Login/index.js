@@ -5,11 +5,11 @@ import { setToken } from '../../../redux/slices/authSlice';
 export const useLogin = (url) => {
 
     const dispatch = useDispatch();
-
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
     const loginUser = async (formData) => {
+        
         setIsLoading(true);
         setIsError(false);
         try {

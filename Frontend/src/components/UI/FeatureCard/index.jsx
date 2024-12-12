@@ -1,12 +1,12 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import './index.scss';
 
 const FeatureCard = ({ icon, title, text }) => {
 
     return (
-        <div className="feature-wrapper">
-            <img src={icon} alt={icon} className="feature-img"/>
-            <h3 className="feature-title">{title}</h3>
+        <div className='feature-wrapper'>
+            <img src={icon} alt={icon} className='feature-img'/>
+            <h3 className='feature-title'>{title}</h3>
             <p>{text}</p>
         </div>
     )

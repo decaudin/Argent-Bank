@@ -1,4 +1,4 @@
-import AccountCard from "../../../ui/AccountCard";
+import AccountCard from '../../../ui/AccountCard';
 
 const Accounts = () => {
 

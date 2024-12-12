@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Input = ( {className, label, type, id, name, value, onChange, ...props} ) => {
 
