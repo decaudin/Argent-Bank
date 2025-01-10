@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Input = ( {className, label, type, id, name, value, onChange, ...props} ) => {
+const Input = ({ className, label, type, id, name, value, onChange, ...props }) => {
 
     return (
         <div className={className}>

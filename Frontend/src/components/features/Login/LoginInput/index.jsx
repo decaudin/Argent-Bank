@@ -14,14 +14,14 @@ import './index.scss';
 
 const LoginInput = () => {
 
-    const { loginUser, isError, isLoading } = useLogin('http://localhost:3001/api/v1/user/login');
+    const { loginUser, isError, isNetworkError, isLoading } = useLogin('http://localhost:3001/api/v1/user/login');
     const { fetchData, isDataError, isDataLoading } = useUserData('http://localhost:3001/api/v1/user/profile');
     const { isPasswordVisible, togglePasswordVisibility } = usePasswordToggle();
     
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({ email: '', password: '' });
-    const [rememberMe, setRememberMe] = useState(false);
+    const [isRememberMe, setIsRememberMe] = useState(false);
     
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -29,7 +29,7 @@ const LoginInput = () => {
         const token = result.data.body.token;
         const data = await fetchData(token);
         if (result.success && data) {
-            if (rememberMe) {
+            if (isRememberMe) {
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify({ firstName: data.body.firstName, lastName: data.body.lastName }));
             } else {
@@ -47,10 +47,11 @@ const LoginInput = () => {
             <Input className='input-wrapper' label='Username' type='email' id='email' name='email' value={formData.email} onChange={handleChange(setFormData)} autoComplete='username' />
             <Input className='input-wrapper' label='Password' type={isPasswordVisible ? 'text' : 'password'} id='password' name='password' value={formData.password} onChange={handleChange(setFormData)} autoComplete='current-password' />
             <EyeToggle isVisible={isPasswordVisible} onToggle={togglePasswordVisibility} />
-            <Input className='checkbow-wrapper' label='Remember me' type='checkbox' id='checkbox' name='checkbox' value='' onChange={(e) => setRememberMe(e.target.checked)} />
+            <Input className='checkbow-wrapper' label='Remember me' type='checkbox' id='checkbox' name='checkbox' value='' checked={isRememberMe} onChange={(e) => setIsRememberMe(e.target.checked)} />
             <input className='input-submit' type='submit' value='Sign In' />
-            {isLoading || isDataLoading && <div className='loader'></div>}
+            {(isLoading || isDataLoading) && <div className='loader'></div>}
             {isError && <ErrorMessage>Paire identifiant/mot de passe incorrecte.</ErrorMessage>}
+            {isNetworkError && <ErrorMessage>Une erreur interne s&apos;est produite lors de votre tentative de connexion. Veuillez réessayer plus tard.</ErrorMessage>}
             {isDataError && <ErrorMessage>Erreur lors du chargement de vos données.</ErrorMessage>}
         </form>
     )

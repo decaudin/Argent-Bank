@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Button from '../Button';
 import './index.scss';
 
-const AccountCard = ( {accountName, balance, balanceType} ) => {
+const AccountCard = ({ accountName, balance, balanceType }) => {
 
     return (
         <div className='account-card'>
