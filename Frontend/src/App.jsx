@@ -27,6 +27,7 @@ const App = () => {
     if (token) {
       dispatch(setToken(token));
     }
+    
   }, [dispatch]);
 
     return (

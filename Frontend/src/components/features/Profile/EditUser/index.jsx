@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { useUpdateUserData } from '../../../../utils/hooks/User/PUT';
+import { useUpdateUserData } from '../../../../utils/hooks/user/PUT';
 import { handleChange } from '../../../../utils/function/handleChange';
 import Input from '../../../ui/Input';
 import Button from '../../../ui/Button';

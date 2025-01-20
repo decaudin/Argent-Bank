@@ -1,11 +1,14 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useAuthRedirect } from '../../../../utils/hooks/auth/Redirection';
 import Button from '../../../ui/Button';
 import EditUser from '../EditUser';
 import './index.scss';
 
+
 const ProfileHeader = () => {
 
+    useAuthRedirect();
     const { firstName, lastName } = useSelector((state) => state.user);
     const [ isEditing, setIsEditing ] = useState(false);
 

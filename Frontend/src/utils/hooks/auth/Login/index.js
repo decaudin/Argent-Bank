@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../../../redux/slices/authSlice';
+import { setToken } from '../../../../redux/slices/authSlice';
 
 export const useLogin = (url) => {
 
@@ -47,15 +47,3 @@ export const useLogin = (url) => {
 
     return { loginUser, isError, isNetworkError, isLoading };
 };
-
-
-
-
-
-
-
-
-
-
-
-
