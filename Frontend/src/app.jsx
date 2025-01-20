@@ -9,6 +9,7 @@ import { Login } from './pages/Login';
 import Profile from './pages/Profile';
 import { Error } from './pages/Error';
 import Footer from './components/ui/Footer';
+import { PrivateRoute } from './components/features/Profile/PrivateRoute';
 import './index.scss'
 
 const App = () => {
@@ -36,7 +37,7 @@ const App = () => {
         <Routes>          
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
